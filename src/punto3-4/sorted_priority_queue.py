@@ -1,0 +1,3 @@
+from sorted_priority_queue_abstract import SortedPriorityQueueAbstract
+class SortedPriorityQueue(SortedPriorityQueueAbstract):
+    pass

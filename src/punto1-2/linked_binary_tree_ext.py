@@ -1,4 +1,4 @@
 from data_structures import LinkedBinaryTree
-from src import LinkedBinaryTreeExtAbstract
-class LinkedBinaryTreeExt( LinkedBinaryTree , LinkedBinaryTreeExtAbstract):
+from linked_binary_tree_ext_abstract import LinkedBinaryTreeExtAbstract
+class LinkedBinaryTreeExt( LinkedBinaryTree,LinkedBinaryTreeExtAbstract):
     pass
