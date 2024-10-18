@@ -1,4 +1,4 @@
-from data_structures import BinaryTreeNode
+from data_structures.trees.binary_tree_node import BinaryTreeNode
 from linked_binary_tree_ext import LinkedBinaryTreeExt
 nodo_a = BinaryTreeNode('A')
 nodo_b = BinaryTreeNode('B')
