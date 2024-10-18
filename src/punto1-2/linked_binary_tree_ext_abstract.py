@@ -13,12 +13,12 @@ class LinkedBinaryTreeExtAbstract(ABC):
         BinaryTreeNode: devuelve el ancestro común de nodo1 y nodo2.
         """
     @abstractmethod
-    def hojas(self) -> List[Any]:
-        """Devuelve los elementos de los nodos que no tienen ningún hijo.
-        Returns:
-        List[Any]: lista formada por los elementos de los nodos hoja.
-        """
-        pass
+    # def hojas(self) -> List[Any]:
+    #     """Devuelve los elementos de los nodos que no tienen ningún hijo.
+    #     Returns:
+    #     List[Any]: lista formada por los elementos de los nodos hoja.
+    #     """
+    #     pass
     @abstractmethod
     def nivel(self, nodo: BinaryTreeNode) -> int:
         """Busca el nodo pasado por parámetro en el árbol y si lo encuentra
@@ -38,14 +38,14 @@ class LinkedBinaryTreeExtAbstract(ABC):
         int: devuelve la máxima cantidad de nodos entre todos los niveles que conforman el árbol.
         """
         pass
-    @abstractmethod
-    def es_balanceado(self) -> bool:
-        """Comprueba si el árbol está balanceado
-        Página 2 de 5
-        Estructuras de Datos - 2024 Trabajo Práctico N.º 4
-        Un árbol está balanceado si para cada uno de sus nodos se cumple que la diferencia de altura
-        entre el subárbol izquierdo y el derecho no difiere en más de una unidad.
-        Returns:
-        bool: True en caso que el árbol esté balanceado. False en caso contrario.
-        """
-        pass
+    # @abstractmethod
+    # def es_balanceado(self) -> bool:
+    #     """Comprueba si el árbol está balanceado
+    #     Página 2 de 5
+    #     Estructuras de Datos - 2024 Trabajo Práctico N.º 4
+    #     Un árbol está balanceado si para cada uno de sus nodos se cumple que la diferencia de altura
+    #     entre el subárbol izquierdo y el derecho no difiere en más de una unidad.
+    #     Returns:
+    #     bool: True en caso que el árbol esté balanceado. False en caso contrario.
+    #     """
+    #     pass
