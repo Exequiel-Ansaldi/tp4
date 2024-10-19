@@ -89,11 +89,10 @@ class LinkedBinaryTreeExt(LinkedBinaryTree,LinkedBinaryTreeExtAbstract):
 
             for _ in range(tamaño_nivel):  
                 actual = cola.dequeue()  
-
-                if actual.left_child:
+                if actual.left_child:  
                     cola.enqueue(actual.left_child)  
-                if actual.right_child:
-                    cola.enqueue(actual.right_child)  
+                if actual.right_child:  
+                    cola.enqueue(actual.right_child)   
 
         return ancho_maximo  
 
