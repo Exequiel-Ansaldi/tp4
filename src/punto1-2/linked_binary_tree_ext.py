@@ -65,7 +65,7 @@ class LinkedBinaryTreeExt(LinkedBinaryTree,LinkedBinaryTreeExtAbstract):
                 if actual == nodo: 
                     return nivel_actual
 
-                # Encolar hijos
+                
                 if actual.left_child:
                     queue.enqueue(actual.left_child)
                 if actual.right_child:
@@ -84,17 +84,53 @@ class LinkedBinaryTreeExt(LinkedBinaryTree,LinkedBinaryTreeExtAbstract):
         cola.enqueue(self.root)
 
         while not cola.is_empty():
-            tamaño_nivel = cola._size 
+            tamaño_nivel = len(cola)
             ancho_maximo = max(ancho_maximo, tamaño_nivel)  
 
             for _ in range(tamaño_nivel):  
-                actual = cola.dequeue()  
+                actual = cola.dequeue()
                 if actual.left_child:  
-                    cola.enqueue(actual.left_child)  
+                        cola.enqueue(actual.left_child)  
                 if actual.right_child:  
-                    cola.enqueue(actual.right_child)   
+                        cola.enqueue(actual.right_child)   
 
-        return ancho_maximo  
+        return ancho_maximo
+    
+    def es_balanceado(self) -> bool:
+    # Si el árbol está vacío, se considera balanceado.
+        if self.root is None:
+            return True
+
+        # Stack para almacenar nodos y sus respectivas alturas.
+        stack = [(self.root, 0)]
+        alturas = {None: 0}
+
+        while stack:
+            nodo, estado = stack.pop()
+
+            if estado == 0:
+                # Almacenar el nodo con estado 'visitado'
+                stack.append((nodo, 1))
+                # Añadir los hijos del nodo actual.
+                if nodo.left_child:
+                    stack.append((nodo.left_child, 0))
+                if nodo.right_child:
+                    stack.append((nodo.right_child, 0))
+            else:
+                # Calcular la altura de los hijos.
+                altura_izq = alturas.get(nodo.left_child, 0)
+                altura_der = alturas.get(nodo.right_child, 0)
+
+                # Verificar si el nodo está balanceado.
+                if abs(altura_izq - altura_der) > 1:
+                    return False
+
+                # Almacenar la altura del nodo.
+                alturas[nodo] = max(altura_izq, altura_der) + 1
+
+        # Si hemos recorrido todo sin encontrar problemas, el árbol está balanceado.
+        return True
+    
 
 
        
