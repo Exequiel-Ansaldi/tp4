@@ -1,6 +1,7 @@
 from typing import Any, List
 from sorted_priority_queue_abstract import SortedPriorityQueueAbstract
-from data_structures import PriorityQueueBase
+from data_structures import ArrayHeap, PriorityQueueBase
+
 class SortedPriorityQueue(SortedPriorityQueueAbstract, PriorityQueueBase):
     def __init__(self):
         self._elements: List[self._Item] = []  
