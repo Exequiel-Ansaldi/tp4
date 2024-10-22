@@ -77,25 +77,25 @@ class LinkedBinaryTreeExt(LinkedBinaryTree,LinkedBinaryTreeExtAbstract):
             nivel_actual += 1
     
     def diametro(self) -> int:
-        if self.root is None:
-            return 0  
+        if self.is_empty():
+            return 0
 
-        ancho_maximo = 0  
-        cola = LinkedQueue()  
-        cola.enqueue(self.root)
+        queue = LinkedQueue()
+        queue.enqueue(self._root)
+        max_width = 0
 
-        while not cola.is_empty():
-            tamaño_nivel = len(cola)
-            ancho_maximo = max(ancho_maximo, tamaño_nivel)  
+        while not queue.is_empty():
+            size = len(queue)
+            max_width = max(max_width, size)
 
-            for _ in range(tamaño_nivel):  
-                actual = cola.dequeue()
-                if actual.left_child:  
-                        cola.enqueue(actual.left_child)  
-                if actual.right_child:  
-                        cola.enqueue(actual.right_child)   
+            for _ in range(size):
+                actual = queue.dequeue()
+                if actual.left_child:
+                    queue.enqueue(actual.left_child)
+                if actual.right_child:
+                    queue.enqueue(actual.right_child)
 
-        return ancho_maximo
+        return max_width
     
     def es_balanceado(self) -> bool:
     # Si el árbol está vacío, se considera balanceado.

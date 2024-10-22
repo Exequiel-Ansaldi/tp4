@@ -32,5 +32,6 @@ class LinkedBinaryClientExt(LinkedBinaryTreeExt):
     nodos_hoja = arbol.hojas()
     print(nodos_hoja) 
     print(arbol.nivel(nodo_k))
-    print(arbol.es_balanceado())
-    # print(arbol.diametro()) 
+    print(arbol.diametro()) 
+    #print(arbol.es_balanceado())
+    
