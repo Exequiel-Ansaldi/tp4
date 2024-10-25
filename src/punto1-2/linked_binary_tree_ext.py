@@ -98,57 +98,47 @@ class LinkedBinaryTreeExt(LinkedBinaryTree,LinkedBinaryTreeExtAbstract):
         return max_width
     
     def es_balanceado(self) -> bool:
-    # Si el árbol está vacío, se considera balanceado.
-        if self.root is None:
+            if self.root is None:
+                return True
+
+            queue = LinkedQueue()
+            queue.enqueue(self._root)
+
+            while not queue.is_empty():
+                nodo = queue.first()
+
+                actual = self._es_balanceado(nodo)
+                print(f"{nodo}: {actual}")
+                if not actual:
+                    return False
+
+                if nodo.left_child:
+                    queue.enqueue(nodo.left_child)
+
+                if nodo.right_child:
+                    queue.enqueue(nodo.right_child)
+
+                queue.dequeue()
+
             return True
+    
+    def _es_balanceado(self, nodo) -> int:
+        if nodo is None:
+            return 0 
 
-        queue = LinkedQueue()
-        queue.enqueue(self._root)
+       
+        altura_izquierda = self._es_balanceado(nodo.left_child)
+        altura_derecha = self._es_balanceado(nodo.right_child)
 
-        while not queue.is_empty():
-            nodo = queue.first()
+       
+        if altura_izquierda == -1 or altura_derecha == -1:
+            return -1
 
-            actual = self._es_balanceado(nodo)
-            print(f"{nodo}: {actual}")
-            if not actual:
-                return False
+       
+        if abs(altura_izquierda - altura_derecha) > 1:
+            return -1
 
-            if nodo.left_child:
-                queue.enqueue(nodo.left_child)
+        
+        return max(altura_izquierda, altura_derecha) + 1
 
-            if nodo.right_child:
-                queue.enqueue(nodo.right_child)
-
-            queue.dequeue()
-
-        return True
-
-        # # Stack para almacenar nodos y sus respectivas alturas.
-        # stack = [(self.root, 0)]
-        # alturas = {None: 0}
-
-        # while stack:
-        #     nodo, estado = stack.pop()
-
-        #     if estado == 0:
-        #         # Almacenar el nodo con estado 'visitado'
-        #         stack.append((nodo, 1))
-        #         # Añadir los hijos del nodo actual.
-        #         if nodo.left_child:
-        #             stack.append((nodo.left_child, 0))
-        #         if nodo.right_child:
-        #             stack.append((nodo.right_child, 0))
-        #     else:
-        #         # Calcular la altura de los hijos.
-        #         altura_izq = alturas.get(nodo.left_child, 0)
-        #         altura_der = alturas.get(nodo.right_child, 0)
-
-        #         # Verificar si el nodo está balanceado.
-        #         if abs(altura_izq - altura_der) > 1:
-        #             return False
-
-        #         # Almacenar la altura del nodo.
-        #         alturas[nodo] = max(altura_izq, altura_der) + 1
-
-        # # Si hemos recorrido todo sin encontrar problemas, el árbol está balanceado.
-        # return True
+    

@@ -18,11 +18,11 @@ class ArrayHeapExtClient(ArrayHeapExt):
         heap.add(20, 'B')
         heap.add(10, 'L')
 
-        print("Heap inicial:")
+        print("Heap:")
         print(heap)
         
         
-        print("\nProbando vaciar:")
+        print("\n Vaciar:")
         heap.vaciar()
         print(f"Heap después de vaciar: {heap}")  
 
@@ -33,7 +33,7 @@ class ArrayHeapExtClient(ArrayHeapExt):
         heap.add(15, 'D')
         heap.add(7, 'E')
 
-        print("\nHeap después de volver a agregar elementos:")
+        print("\nAgregando elementos:")
         print(heap)
 
         
